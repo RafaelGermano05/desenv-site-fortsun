@@ -182,7 +182,7 @@ body {
     max-width: 500px;
     margin: 0 auto;
     position: relative;
-    animation: float 6s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
 }
 
 .hero-image {
