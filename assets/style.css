@@ -126,7 +126,7 @@ body {
 /* Hero Section */
 .fullscreen-hero {
   height: 100vh;
-  background: linear-gradient(rgba(0, 27, 58, 0.9), rgba(0, 69, 158, 0.8)),
+  background: linear-gradient(rgba(0, 27, 58, 0.949), rgba(0, 69, 158, 0.8)),
     url("assets/img/fortsun-pessoas.jpeg") no-repeat center center/cover;
   display: flex;
   align-items: center;
