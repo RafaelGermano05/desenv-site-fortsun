@@ -6,7 +6,788 @@
     <title>FORTSUN BRASIL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" href="assets/img/fav-fortsun-logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        :root {
+            --dark-blue: #002f6c;
+            --medium-blue: #00449e;
+            --light-blue: #0066ff;
+            --white: #ffffff;
+            --yellow: #ffe600;
+            --gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--dark-blue);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-fortsun {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .logo-mercado-pago {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--yellow);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Primeira Land - Fullscreen Hero com Imagem de Fundo */
+        .fullscreen-hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 47, 108, 0.893), rgba(0, 69, 158, 0.751)), 
+                        url('assets/img/fortsun-pessoas.jpeg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content h1 span {
+            color: var(--yellow);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--yellow);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--white);
+            color: var(--dark-blue);
+        }
+
+        /* Segunda Land - Parceria */
+        .partnership-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+
+        .partnership-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .partnership-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .partnership-text h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-text h2 span {
+            color: var(--yellow);
+        }
+
+        .partnership-text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .partnership-images {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .partnership-logo {
+            max-width: 650px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Terceira Land - Serviços e Áreas */
+        .services-section {
+            min-height: 100vh;
+            padding: 5rem 5%;
+            background-color: var(--gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--yellow);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: bold;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        .map-marker::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 230, 0, 0.3);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 2s infinite 0.5s;
+        }
+
+        .states-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .state-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .state-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .state-icon {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Quarta Land - Portfólio */
+        .portfolio-section {
+            min-height: 100vh;
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            aspect-ratio: 1/1;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 47, 108, 0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        /* Quinta Land - Programas */
+        .programs-section {
+            min-height: 100vh;
+            padding: 5rem 5%;
+            background-color: var(--gray);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .program-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            aspect-ratio: 1/1;
+        }
+
+        .program-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .program-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .program-item:hover .program-img {
+            transform: scale(1.1);
+        }
+
+        .program-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 47, 108, 0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .program-item:hover .program-overlay {
+            transform: translateY(0);
+        }
+
+        /* Sexta Land - Parcerias */
+        .partners-section {
+            min-height: 100vh;
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+
+        .partners-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .partner-logo {
+            max-width: 200px;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .partner-logo.mercado-pago {
+            max-width: 250px;
+        }
+
+        /* Work With Us Section */
+        .work-with-us {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .work-with-us .section-title h2 {
+            color: var(--white);
+        }
+
+        .work-with-us .section-title h2::after {
+            background-color: var(--yellow);
+        }
+
+        .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+        }
+
+        .benefit-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item i {
+            font-size: 2.5rem;
+            color: var(--yellow);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 5rem 5%;
+            background-color: var(--gray);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--light-blue);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--yellow);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                padding: 0.8rem 5%;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .fullscreen-hero {
+                height: auto;
+                padding: 120px 20px 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .partnership-container, .services-container, .programs-container {
+                flex-direction: column;
+            }
+
+            .portfolio-grid, .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -19,106 +800,200 @@
         </button>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Início</a></li>
-            <li><a href="#about">Sobre Nós</a></li>
-            <li><a href="#features">Nossos Serviços</a></li>
-            <li><a href="#partnerships">Parcerias</a></li>
-            <li><a href="#work">Trabalhe Conosco</a></li>
+            <li><a href="#partnership">Parceria</a></li>
+            <li><a href="#services">Serviços</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#programs">Programas</a></li>
+            <li><a href="#partners">Parceiros</a></li>
             <li><a href="#contact">Contato</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section Corrigida -->
-    <section class="hero" id="home">
+    <!-- Primeira Land - Fullscreen Hero com Imagem de Fundo -->
+    <section class="fullscreen-hero" id="home">
         <div class="hero-content">
-            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h1>FORTSUN BRASIL <span>Parceira Estratégica Mercado Pago</span></h1>
-                    <p>Soluções completas em adquirência para o seu negócio com as melhores maquininhas de cartão do mercado.</p>
-                    
-                    <div class="cta-container">
-                        <a href="#contact" class="cta-button">Quero ser um parceiro</a>
-                        <a href="#features" class="cta-button secondary">Conheça nossos serviços</a>
-                    </div>
-                </div>
-                <div class="hero-image-container">
-                    <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <div>
-                            <img src="assets/img/fortsun-pessoas.jpeg" alt="Maquininha Mercado Pago" style="max-width: 100%; filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.3));">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-            <!-- <div class="hero-image-container">
-                <img src="n950-_mlb-removebg-preview.png" alt="Maquininha Mercado Pago" class="hero-image">
-            </div> -->
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="section-title">
-            <h2>Sobre a FortSun</h2>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Quem Somos</h3>
-                <p>A FORTSUN BRASIL é uma empresa especializada em soluções de pagamento, atuando como parceira estratégica do Mercado Pago no segmento de adquirência. Nossa missão é simplificar e potencializar as transações financeiras dos nossos clientes, oferecendo as melhores tecnologias do mercado.</p>
-                <p>Com uma equipe altamente qualificada, dividida entre colaboradores internos e externos, estamos presentes em todo o território nacional, levando soluções personalizadas para cada tipo de negócio.</p>
-                <p>Nossa parceria com o Mercado Pago nos permite oferecer as melhores maquininhas de cartão, com taxas competitivas e toda a segurança que sua empresa merece.</p>
-            </div>
-            <div class="about-image">
-                <img src="assets/img/1739814864016.jpeg" alt="Equipe FortSun">
+            <h1><span>Olá, nós somos a </span>FORTSUN BRASIL<span>!</span></h1>
+            <p>Soluções completas em adquirência com tecnologia de ponta e atendimento personalizado para o seu negócio.</p>
+            <div class="cta-container">
+                <a href="#contact" class="cta-button">Quero ser um parceiro</a>
+                <a href="#services" class="cta-button secondary">Conheça nossos serviços</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section features" id="features">
-        <div class="section-title">
-            <h2>Nossos Serviços</h2>
+    <!-- Segunda Land - Parceria Mercado Pago -->
+    <section class="partnership-section" id="partnership">
+        <div class="partnership-container">
+            <div class="partnership-text">
+                <h2>Parceria Estratégica <span>Mercado Pago</span></h2>
+                <p>Como parceira oficial do Mercado Pago, a FortSun oferece as melhores soluções em maquininhas de cartão e sistemas de pagamento para o seu negócio.</p>
+                <p>Nossa parceria nos permite oferecer taxas competitivas, tecnologia de ponta e todo o suporte necessário para que sua empresa possa crescer com segurança e eficiência.</p>
+                <a href="#contact" class="cta-button">Saiba mais sobre a parceria</a>
+            </div>
+            <div class="partnership-images">
+                <img src="assets/img/hero-maquininha-img-removebg-preview.png" alt="Maquininha Mercado Pago" class="partnership-logo" style="width: 650px;">
+            </div>
         </div>
-        <div class="features-container">
-            <div class="feature-card">
-                <div class="feature-icon">
+    </section>
+
+    <!-- Terceira Land - Serviços e Áreas -->
+    <section class="services-section" id="services">
+        <div class="section-title">
+            <h2>Nossos Serviços e Áreas de Atuação</h2>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon">
                     <i class="fas fa-credit-card"></i>
                 </div>
                 <h3>Maquininhas de Cartão</h3>
-                <p>Oferecemos as melhores maquininhas do Mercado Pago, com tecnologia de ponta e segurança para todas as suas transações.</p>
+                <p>As melhores maquininhas do mercado com tecnologia de ponta e segurança para todas as suas transações.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
+            <div class="service-card">
+                <div class="service-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <h3>Taxas Competitivas</h3>
-                <p>Taxas personalizadas de acordo com o volume de transações do seu negócio, garantindo a melhor relação custo-benefício.</p>
+                <p>Planos personalizados de acordo com o volume de transações do seu negócio.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
+            <div class="service-card">
+                <div class="service-icon">
                     <i class="fas fa-headset"></i>
                 </div>
                 <h3>Suporte Especializado</h3>
-                <p>Equipe de suporte técnico e comercial disponível para tirar todas as suas dúvidas e resolver qualquer problema.</p>
+                <p>Equipe técnica e comercial disponível para resolver qualquer problema.</p>
+            </div>
+        </div>
+        
+        <div class="section-title" style="margin-top: 4rem;">
+            <h2>Áreas de Atuação</h2>
+        </div>
+        
+        
+        
+        <div class="states-container">
+            <div class="state-card">
+                <div class="state-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Ceará</h3>
+                <p>Cobertura em todo o estado</p>
+            </div>
+            <div class="state-card">
+                <div class="state-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Piauí</h3>
+                <p>Atendimento completo</p>
+            </div>
+            <div class="state-card">
+                <div class="state-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Maranhão</h3>
+                <p>Expansão em andamento</p>
             </div>
         </div>
     </section>
 
-    <!-- Partnerships Section -->
-    <section class="section partnerships" id="partnerships">
+    <!-- Quarta Land - Portfólio -->
+    <section class="portfolio-section" id="portfolio">
         <div class="section-title">
-            <h2>Nossas Parcerias</h2>
+            <h2>Nosso Portfólio</h2>
+            <p>Conheça um pouco do nosso trabalho e da nossa equipe</p>
         </div>
-        <p>Somos parceiros estratégicos das maiores empresas de pagamento do mercado, garantindo sempre as melhores soluções para nossos clientes.</p>
-        <div class="partners-logos">
-            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.5/mercadopago/logo__small@2x.png" alt="Mercado Pago" class="partner-logo mercado-pago">
-            <img src="assets/img/unifor-logo.png" alt="Parceiro 1" class="partner-logo">
-            <img src="assets/img/unnamed (1).png" alt="Parceiro 2" class="partner-logo" style="width: 130px;">
-            <img src="assets/img/tp-logo.png" alt="Parceiro 3" class="partner-logo" style="width: 130px">
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="assets/img/fortsun-equipe1.jpg" alt="Equipe FortSun" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Equipe FortSun</h3>
+                    <p>Profissionais qualificados</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/img/fortsun-event1.jpg" alt="Evento FortSun" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Eventos Corporativos</h3>
+                    <p>Integração e networking</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/img/fortsun-maquininha.jpg" alt="Maquininha" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Nossos Produtos</h3>
+                    <p>Tecnologia de ponta</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/img/fortsun-treinamento.jpg" alt="Treinamento" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Treinamentos</h3>
+                    <p>Capacitação contínua</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/img/fortsun-parceria.jpg" alt="Parceria" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Parcerias</h3>
+                    <p>Relações estratégicas</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/img/fortsun-premiacao.jpg" alt="Premiação" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Premiações</h3>
+                    <p>Reconhecimento ao mérito</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Work With Us Section -->
+    <!-- Quinta Land - Programas  -->
+    <section class="programs-section" id="programs">
+        <div class="section-title">
+            <h2>Nossos Programas</h2>
+            <p>Iniciativas exclusivas para desenvolvimento e integração</p>
+        </div>
+        <div class="programs-grid">
+            <a href="https://exemplo.com/empower" class="program-item" target="_blank">
+                <img src="assets/img/empower-program.jpg" alt="Programa Empower" class="program-img">
+                <div class="program-overlay">
+                    <h3>Empower</h3>
+                    <p>Evento anual de integração</p>
+                </div>
+            </a>
+            <a href="https://exemplo.com/sunacademy" class="program-item" target="_blank">
+                <img src="assets/img/sunacademy-program.jpg" alt="Programa Sun Academy" class="program-img">
+                <div class="program-overlay">
+                    <h3>Sun Academy</h3>
+                    <p>Capacitação profissional</p>
+                </div>
+            </a>
+            <a href="https://exemplo.com/onboarding" class="program-item" target="_blank">
+                <img src="assets/img/onboarding-program.jpg" alt="Programa Onboarding" class="program-img">
+                <div class="program-overlay">
+                    <h3>Onboarding</h3>
+                    <p>Integração de novos membros</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sexta Land - Parcerias -->
+    <section class="partners-section" id="partners">
+        <div class="section-title">
+            <h2>Nossas Parcerias</h2>
+            <p>Colaboramos com as melhores instituições do mercado</p>
+        </div>
+        <div class="partners-logos">
+            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.5/mercadopago/logo__small@2x.png" alt="Mercado Pago" class="partner-logo mercado-pago">
+            <img src="assets/img/unifor-logo.png" alt="Unifor" class="partner-logo">
+            <img src="assets/img/unnamed (1).png" alt="Parceiro 2" class="partner-logo">
+            <img src="assets/img/tp-logo.png" alt="Parceiro 3" class="partner-logo">
+        </div>
+    </section>
+
+    <!-- Trabalhe conosco Section -->
     <section class="section work-with-us" id="work">
         <div class="section-title">
             <h2>Venha Trabalhar Conosco</h2>
@@ -144,7 +1019,7 @@
         <a href="#contact" class="cta-button">Quero fazer parte</a>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contato Section -->
     <section class="section contact" id="contact">
         <div class="section-title">
             <h2>Fale Conosco</h2>
@@ -188,10 +1063,11 @@
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="#home">Início</a></li>
-                    <li><a href="#about">Sobre Nós</a></li>
-                    <li><a href="#features">Serviços</a></li>
-                    <li><a href="#partnerships">Parcerias</a></li>
-                    <li><a href="#work">Trabalhe Conosco</a></li>
+                    <li><a href="#partnership">Parceria</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#programs">Programas</a></li>
+                    <li><a href="#partners">Parceiros</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
             </div>
@@ -208,6 +1084,80 @@
             <p>&copy; 2024 FortSun Brasil. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="assets/script.js"></script>
-</body>
-</html>
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            contactForm.reset();
+        });
+
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .benefit-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        document.querySelectorAll('.feature-card, .benefit-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        const heroImage = document.querySelector('.hero-image');
+        const heroImageContainer = document.querySelector('.hero-image-container');
+
+        heroImageContainer.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            heroImage.style.transform = `perspective(1000px) rotateY(${-15 + xAxis}deg)`;
+        });
+
+        heroImageContainer.addEventListener('mouseleave', () => {
+            heroImage.style.transform = 'perspective(1000px) rotateY(-15deg)';
+        });
+
+        // Adiciona animação de hover para os marcadores do mapa
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('mouseenter', () => {
+                marker.style.transform = 'translate(-50%, -50%) scale(1.2)';
+            });
+            
+            marker.addEventListener('mouseleave', () => {
+                marker.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+        });
+    </script>
