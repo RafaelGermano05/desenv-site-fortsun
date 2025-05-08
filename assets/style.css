@@ -123,7 +123,6 @@ body {
   cursor: pointer;
 }
 
-/* Hero Section */
 .fullscreen-hero {
   height: 100vh;
   background: linear-gradient(rgba(0, 27, 58, 0.949), rgba(0, 69, 158, 0.8)),
@@ -252,7 +251,6 @@ body {
   animation: float 1.8s ease-in-out infinite;
 }
 
-/* Services Section */
 .services-section {
   background-color: var(--gray);
 }
@@ -285,7 +283,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* States Container */
 .states-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -316,7 +313,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Portfolio Section */
 .portfolio-section {
   background-color: var(--white);
 }
@@ -458,7 +454,6 @@ body {
   max-width: 220px;
 }
 
-/* Work With Us Section */
 .work-with-us {
   background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
   color: var(--white);
@@ -540,7 +535,6 @@ body {
   min-height: 120px;
 }
 
-/* Footer */
 .footer {
   background-color: var(--dark-blue);
   color: var(--white);
@@ -608,7 +602,6 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Styles */
 @media (max-width: 992px) {
   .section {
     padding: 3rem 5%;

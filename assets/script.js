@@ -1,4 +1,3 @@
-// Mobile Menu Toggle
   
     const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
     const navLinks = document.querySelector(".nav-links");

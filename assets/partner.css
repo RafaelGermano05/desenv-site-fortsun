@@ -122,7 +122,6 @@
     cursor: pointer;
   }
 
-  /* Hero Section */
   .partnership-hero {
     height: 60vh;
     background: linear-gradient(rgba(0, 47, 108, 0.9), rgba(0, 69, 158, 0.8));
@@ -168,7 +167,6 @@
     transition: all 0.3s;
     border: 2px solid var(--yellow);
     font-size: 1rem;
-    /* margin: 1.5rem, 0, 1.5rem, 0; */
   }
 
   .cta-button:hover {
@@ -178,7 +176,6 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 
-  /* Product Showcase */
   .product-showcase {
     display: flex;
     align-items: center;
@@ -234,7 +231,6 @@
     top: -3px;
   }
 
-  /* Partnership History */
   .timeline {
     position: relative;
     max-width: 1200px;
@@ -303,7 +299,6 @@
     color: var(--dark-gray);
   }
 
-  /* Benefits Section */
   .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -332,7 +327,6 @@
     margin-bottom: 1rem;
   }
 
-  /* CTA Section */
   .cta-section {
     background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
     color: var(--white);
@@ -539,7 +533,6 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .cta-button {
 transition: all 0.3s ease, box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-/* Transição suave para todos os elementos animados */
 [class*="container"], 
 [class*="grid"],
 .section-title,
@@ -547,7 +540,6 @@ transition: all 0.3s ease, box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Evita piscar de conteúdo durante o carregamento */
 body.js-loading [class*="container"],
 body.js-loading [class*="grid"],
 body.js-loading .section-title,
@@ -556,7 +548,6 @@ opacity: 0;
 transform: translateY(20px);
 }
 
-/* Estilos específicos para cada tipo de elemento */
 .service-card,
 .state-card,
 .portfolio-item,
