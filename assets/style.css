@@ -735,3 +735,10 @@ body {
     transform: translateY(-10px);
   }
 }
+
+/* Garante que a transição será suave */
+.partnership-container, .service-card, .state-card,
+.portfolio-item, .program-item, .benefit-item,
+.partner-logo, .section-title, .contact-form {
+  will-change: transform, opacity;
+}

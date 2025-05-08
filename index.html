@@ -20,6 +20,13 @@
     color: var(--white);
     padding: 80px 5% 0;
   }
+
+/* .partnership-container, .service-card, .state-card,
+.portfolio-item, .program-item, .benefit-item,
+.partner-logo, .section-title, .contact-form {
+  will-change: transform, opacity;
+} */
+
   </style>
 </head>
 <body>
@@ -47,7 +54,7 @@
       <h1 style="font-size: 45px;"><span>Olá, nós somos a <br> </span>FORTSUN BRASIL<span>!</span></h1>
       <p>Construímos um futuro financeiro tecnológico acessível e sem complicações.</p>
       <div class="cta-container">
-        <a href="#contact" class="cta-button">Contato</a>
+        <a href="https://wa.me/558597408040" class="cta-button">Contato</a>
         <a href="#services" class="cta-button secondary">Serviços</a>
       </div>
     </div>
@@ -131,48 +138,28 @@
     <div class="section-title">
       <h2>Sobre Nós</h2>
     </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <img src="assets/img/fortsun-equipe1.jpg" alt="Equipe FortSun" class="portfolio-img">
-        <div class="portfolio-overlay">
-          <h3>Equipe FortSun</h3>
-          <p>Profissionais qualificados</p>
+    <div class="programs-grid">
+      <a href="news.html" class="program-item" target="_blank">
+        <img src="assets/img/empower-program.jpg" alt="FORTSUN NEWS" class="program-img">
+        <div class="program-overlay">
+          <h3>FORTSUN NEWS</h3>
+          <p>Jornal de notícias e atualidados Fortsun</p>
         </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="assets/img/fortsun-event1.jpg" alt="Evento FortSun" class="portfolio-img">
-        <div class="portfolio-overlay">
-          <h3>Eventos Corporativos</h3>
-          <p>Integração e networking</p>
+      </a>
+      <a href="https://exemplo.com/sunacademy" class="program-item" target="_blank">
+        <img src="assets/img/sunacademy-program.jpg" alt="Programa Sun Academy" class="program-img">
+        <div class="program-overlay">
+          <h3>Sun Academy</h3>
+          <p>Capacitação profissional</p>
         </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="assets/img/fortsun-maquininha.jpg" alt="Maquininha" class="portfolio-img">
-        <div class="portfolio-overlay">
-          <h3>Nossos Produtos</h3>
-          <p>Tecnologia de ponta</p>
+      </a>
+      <a href="https://exemplo.com/onboarding" class="program-item" target="_blank">
+        <img src="assets/img/onboarding-program.jpg" alt="Programa Onboarding" class="program-img">
+        <div class="program-overlay">
+          <h3>Onboarding</h3>
+          <p>Integração de novos membros</p>
         </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="assets/img/fortsun-treinamento.jpg" alt="Treinamento" class="portfolio-img">
-        <div class="portfolio-overlay">
-          <h3>Treinamentos</h3>
-          <p>Capacitação contínua</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="assets/img/fortsun-parceria.jpg" alt="Parceria" class="portfolio-img">
-        <div class="portfolio-overlay">
-          <h3>Parcerias</h3>
-          <p>Relações estratégicas</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="assets/img/fortsun-premiacao.jpg" alt="Premiação" class="portfolio-img">
-        <div class="portfolio-overlay">
-          <h3>Premiações</h3>
-          <p>Reconhecimento ao mérito</p>
-        </div>
+      </a>
       </div>
     </div>
   </section>
@@ -312,6 +299,35 @@
     </div>
   </footer>
 
-  <script src="assets/script.js"></script>
+  <script src="assets/script.js">
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const elementos = document.querySelectorAll(
+    '.partnership-container, .service-card, .state-card, ' +
+    '.portfolio-item, .program-item, .benefit-item, ' +
+    '.partner-logo, .section-title, .contact-form'
+  );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1 // Dispara quando 10% do elemento está visível
+  });
+
+  elementos.forEach(elemento => {
+    elemento.style.opacity = '0';
+    elemento.style.transform = 'translateY(30px)';
+    elemento.style.transition = 'all 0.6s ease-out';
+    observer.observe(elemento);
+  });
+});
+  </script>
 </body>
 </html>
