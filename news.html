@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="shortcut icon" href="assets/img/fav-fortsun-logo.jpg" type="image/x-icon" />
   <link rel="stylesheet" href="assets/news.css">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
     .news-hero {
       height: 60vh;
@@ -23,11 +24,15 @@
       margin-bottom: 3rem;
     }
   </style>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+  <script>
+  AOS.init();
+</script>
   <nav class="navbar">
     <div class="logo-container">
-      <img src="assets/img/LOGO_FORTSUN_PDF.1.png" alt="Fortsun Logo" class="logo-fortsun" />
+      <img src="assets/img/LOGO_FORTSUN_PDF.1.png" alt="Fortsun Logo" class="logo-fortsun"/>
       <img src="assets/img/MP_CMYK_HANDSHAKE_pluma-relleno-blanco_hori-izq.png" alt="Mercado Pago Logo" class="logo-mercado-pago" />
     </div>
     <button class="mobile-menu-btn" aria-label="Menu">
@@ -45,7 +50,7 @@
   </nav>
 
   <section class="news-hero">
-    <div class="hero-content">
+    <div class="hero-content" data-aos="zoom-in-up">
       <h1 style="font-size: 45px;">FORTSUN <span>NEWS</span></h1>
       <p>Fique por dentro das últimas notícias e atualizações da Fortsun Brasil</p>
     </div>
@@ -58,7 +63,7 @@
     <div class="news-conta">
         <!-- Notícia 1 -->
         <article class="news-article">
-          <div class="article-header">
+          <div class="article-header" data-aos="zoom-in-up">
             <img src="assets/img/Imperatriz-maranhao.jpg" alt="Expansão para o Maranhão" class="article-image">
             <span class="article-date">Abril, 2025</span>
           </div>
@@ -78,7 +83,7 @@
       <h2>Últimas Notícias</h2>
     </div>
 
-    <div class="news-grid">
+    <div class="news-grid" data-aos="zoom-in-up">
       <!-- Notícia 1 -->
       <article class="news-article">
         <div class="article-header">
