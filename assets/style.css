@@ -3,7 +3,7 @@
   --medium-blue: #00449e;
   --light-blue: #8a979f;
   --white: #ffffff;
-  --yellow: #d7d8d5;
+  --yellow: rgb(184, 185, 183);
   --gray: #f5f5f5;
   --dark-gray: #001b3a;
 }
@@ -224,16 +224,16 @@ body {
 .hero-content h1 span {
   color: var(--yellow);
 }
-
-.hero-content p {
-  font-size: clamp(1rem, 2vw, 1.5rem);
+*/
+ .hero-content p {
+  font-size: clamp(0.8rem, 1.8vw, 1.4rem);
   margin-bottom: 2.5rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   animation: fadeInUp 1.5s ease 0.3s both;
-}
-*/
+} 
+
 .cta-container {
   display: flex;
   justify-content: center;
@@ -355,7 +355,8 @@ body {
 .service-icon {
   font-size: 3rem;
   color: var(--yellow);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .states-container {
@@ -366,6 +367,14 @@ body {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.states-container img{
+  height: 90px;
+}
+
+.states-container h3{
+  color: #272728;
 }
 
 .state-card {
@@ -587,13 +596,13 @@ body {
 .partner-logo {
   max-width: 180px;
   height: auto;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   opacity: 0.7;
   transition: all 0.3s;
 }
 
 .partner-logo:hover {
-  filter: grayscale(0%);
+  /* filter: grayscale(0%); */
   opacity: 1;
 }
 
