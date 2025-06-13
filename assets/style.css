@@ -1106,3 +1106,228 @@ body {
 .partner-logo, .section-title, .contact-form {
   will-change: transform, opacity;
 }
+
+/* Ajustes Gerais de Responsividade */
+@media (max-width: 1200px) {
+  .partnership-container, .services-container, .benefits {
+    max-width: 100%;
+    padding: 0 2%;
+  }
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding: 3rem 5%;
+  }
+  
+  .partnership-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .partnership-images {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Menu de Navegação Mobile */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-blue);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  /* Ajustes Hero */
+  .fullscreen-hero {
+    padding-top: 100px;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .cta-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+  
+  /* História/Parceria */
+  .history-word {
+    font-size: 2.8rem;
+    display: block;
+    margin: 0.5rem 0;
+  }
+  
+  .orbital-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .dot img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Serviços */
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .states-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* Rodapé */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 5%;
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .history-word {
+    font-size: 2rem;
+  }
+  
+  .states-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .partner-logo {
+    max-width: 120px;
+  }
+  
+  .partner-logo.mercado-pago {
+    max-width: 150px;
+  }
+  
+  .portfolio-single-overlay h3 {
+    font-size: 1.8rem;
+  }
+  
+  .portfolio-single-overlay p {
+    font-size: 1rem;
+  }
+  
+  /* Ajuste orbital para mobile */
+  .orbital-container {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .dot img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Melhorias para tablets em modo paisagem */
+@media (max-width: 992px) and (orientation: landscape) {
+  .fullscreen-hero {
+    padding-top: 80px;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    padding: 2rem 0;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .history-word {
+    font-size: 1.8rem;
+  }
+  
+  .service-card, .state-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Garantir que imagens não ultrapassem seus containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Melhorias de toque para dispositivos móveis */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ajuste de velocidade de animações para dispositivos móveis */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
