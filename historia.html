@@ -11,23 +11,57 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>  
   .partnership-hero {
-  height: 100vh;
-  background: linear-gradient(rgba(0, 27, 58, 0.969), rgba(0, 51, 118, 0.838)),
-    url("assets/img/e3520cd6-5b25-4b47-8751-73c0b8df79c7.jpeg") no-repeat center center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--white);
-  padding: 80px 5% 0;
-}
-</style>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    height: 100vh;
+    min-height: 600px;
+    background: linear-gradient(rgba(0, 27, 58, 0.969), rgba(0, 51, 118, 0.838)),
+      url("assets/img/e3520cd6-5b25-4b47-8751-73c0b8df79c7.jpeg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 80px 5% 0;
+  }
+  
+  /* Adicionado para melhorar a responsividade */
+  @media (max-width: 768px) {
+    .partnership-hero {
+      padding-top: 100px;
+      min-height: 100vh;
+      height: auto;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+      font-size: 1rem;
+    }
+    
+    .cta-button {
+      padding: 0.7rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+  </style>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
   <script>
   AOS.init();
-</script>
+  </script>
+  
   <nav class="navbar">
     <div class="logo-container">
       <img src="assets/img/LOGO_FORTSUN_PDF.1.png" alt="Fortsun Logo" class="logo-fortsun" />
@@ -56,7 +90,6 @@
   <section id="history" class="section" style="background-color: var(--white);">
     <div class="section-title">
       <h2>Nossa História</h2>
-      <!-- <p>Uma parceria que transforma o mercado de pagamentos</p> -->
     </div>
     
     <div class="timeline">
@@ -142,5 +175,39 @@
   </footer>
 
   <script src="assets/partner.js"></script>
+  <script>
+    // Menu Mobile
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      this.querySelector('i').classList.toggle('fa-times');
+      this.querySelector('i').classList.toggle('fa-bars');
+    });
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+        const btn = document.querySelector('.mobile-menu-btn i');
+        if (btn) {
+          btn.classList.remove('fa-times');
+          btn.classList.add('fa-bars');
+        }
+      });
+    });
+
+    // Ajustar altura do hero no mobile
+    function adjustHeroHeight() {
+      const hero = document.querySelector('.partnership-hero');
+      if (window.innerWidth <= 768) {
+        hero.style.minHeight = window.innerHeight + 'px';
+      } else {
+        hero.style.minHeight = '100vh';
+      }
+    }
+
+    // Executar ao carregar e redimensionar
+    window.addEventListener('load', adjustHeroHeight);
+    window.addEventListener('resize', adjustHeroHeight);
+  </script>
 </body>
 </html>

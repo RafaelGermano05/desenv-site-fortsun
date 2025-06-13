@@ -45,3 +45,54 @@ const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
     window.addEventListener('scroll', animateElements);
     window.addEventListener('load', animateElements);
     
+    document.addEventListener('DOMContentLoaded', function() {
+  // Verificar se estamos em um dispositivo móvel
+  const isMobile = window.innerWidth <= 768;
+  
+  // Configurar animações específicas para mobile
+  if (isMobile) {
+    // Reduzir duração das animações para melhor performance
+    document.querySelectorAll('[data-aos]').forEach(el => {
+      el.setAttribute('data-aos-duration', '500');
+    });
+    
+    // Desativar algumas animações complexas
+    document.querySelectorAll('.animated').forEach(el => {
+      el.style.animation = 'none';
+      el.style.opacity = '1';
+    });
+  }
+  
+  // Suavizar rolagem para links internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Ajustar timeline para mobile
+  function adjustTimeline() {
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+    
+    if (window.innerWidth <= 992) {
+      timeline.classList.add('mobile-view');
+    } else {
+      timeline.classList.remove('mobile-view');
+    }
+  }
+  
+  // Executar ao carregar e redimensionar
+  window.addEventListener('load', adjustTimeline);
+  window.addEventListener('resize', adjustTimeline);
+});
